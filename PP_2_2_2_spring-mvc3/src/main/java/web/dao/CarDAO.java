@@ -1,10 +1,9 @@
-package web.dao;
 
 import org.springframework.stereotype.Component;
 import web.model.Car;
-
 import java.util.ArrayList;
 import java.util.List;
+
 @Component
 public class CarDAO {
     private List<Car> cars;
@@ -18,8 +17,10 @@ public class CarDAO {
         cars.add(new Car("Subaru", 18, "Grey"));
     }
 
-public List<Car> show(int index){
-       return cars.stream().limit(index).toList();
-}
-
+    public List<Car> show(Integer index) {
+        if (index == null) {
+            index = 5;
+        }
+        return cars.stream().limit(index).toList();
+    }
 }
