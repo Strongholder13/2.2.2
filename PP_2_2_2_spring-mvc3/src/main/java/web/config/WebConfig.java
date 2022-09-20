@@ -31,14 +31,13 @@ import java.util.Properties;
 public class WebConfig implements WebMvcConfigurer {
 
     private final ApplicationContext applicationContext;
-
-    public WebConfig(ApplicationContext applicationContext) {
+    private final Environment env;
+    @Autowired
+    public WebConfig(ApplicationContext applicationContext, Environment env) {
         this.applicationContext = applicationContext;
+        this.env = env;
     }
 
-
-    @Autowired
-    private Environment env;
     @Bean
     public SpringResourceTemplateResolver templateResolver() {
         SpringResourceTemplateResolver templateResolver = new SpringResourceTemplateResolver();
